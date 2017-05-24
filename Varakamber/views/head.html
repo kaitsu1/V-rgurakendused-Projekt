@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Varakamber</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+
+<div>
+    <a href="?page=index">Avaleht</a>
+</div>
+    <?php if(isset($_SESSION['user'])): ?>
+
+<div>
+    <ul>
+        <li>
+            <ul>
+                <li>
+                    <a href="?page=logout">Logi välja</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+  <?php endif; ?>    

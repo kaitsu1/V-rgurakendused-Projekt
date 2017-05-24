@@ -1,0 +1,31 @@
+<form action="index.php?page=loginsuccess" method="post">
+    <h2>
+        Logi sisse
+    </h2>
+	
+	<div>
+        admin@admin.ee/adminadmin
+    </div>
+	<br/>
+    <div>
+        <label for="inputEmail">E-posti aadress</label> <input autofocus="" id="inputEmail" name="login_email" placeholder="E-posti aadress" required=""  maxlength="1024" type="email">
+    </div>
+
+    <div class="form-group">
+        <label for="inputPassword">Salasõna</label> <input id="inputPassword" name="login_password" placeholder="Salasõna" required=""  maxlength="1024" type="password">
+    </div>
+    <button type="submit">Sisene</button>
+</form>
+<br/>
+<?php if(isset($_SESSION['errors'])): ?>
+<div role="alert">
+    <div style="margin-left: 1em">
+        <p>
+            <?php foreach($_SESSION['errors'] as $error=>$message):
+            echo '<p>'.$message.'</p>';
+            endforeach; ?>
+        </p>
+    </div>
+</div>
+<?php unset($_SESSION['errors']); ?>
+<?php endif; ?>

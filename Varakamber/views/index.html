@@ -1,0 +1,20 @@
+<div>
+		<?php if(isset($_SESSION['user'])): ?>
+		<div>
+			<p>Seletav tekst</p>
+			<?php if(!isset($_SESSION['user'])): ?>
+			<p><a href="?page=login">Logi sisse</a> või <a href="?page=register">registreeri kasutajaks</a></p>
+			<?php endif; ?>
+		</div>
+		<?php else: ?>
+			<div class="jumbotron">
+				<h1>Varakamber</h1>
+				<p>Varakamber hoiab infot selle kohta, kus kohas mis kola asub.</p>
+				<p><a href="?page=login">Logi sisse</a>
+				</br>
+				<a href="?page=register">Registreeru</a></p>
+			</div>
+		<?php endif; ?>
+</div>
+
+

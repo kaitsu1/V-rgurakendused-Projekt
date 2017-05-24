@@ -1,0 +1,34 @@
+<form action="index.php?page=registersuccess" class="form-register" method="post">
+    <h2 class="form-signin-heading">
+        Registreeru
+    </h2>
+
+    <div>
+        <label for="inputName">Nimi</label> <input autofocus="" class="form-control" id="inputName" name="name" placeholder="Nimi" required=""  maxlength="100" type="text">
+    </div>
+
+    <div>
+        <label for="inputEmail">E-posti aadress</label> <input autofocus="" class="form-control" id="inputEmail" name="email" placeholder="E-posti aadress" required=""  maxlength="1024" type="email">
+    </div>
+
+    <div>
+        <label for="inputPassword">Salasõna</label> <input class="form-control" id="inputPassword" name="password1" placeholder="Salasõna" required="" maxlength="1024" type="password">
+    </div>
+
+    <div>
+        <label for="inputPassword">Salasõna uuesti</label> <input class="form-control" id="inputPassword" name="password2" placeholder="Salasõna uuesti" maxlength="1024" required="" type="password">
+    </div>
+    <button type="submit">Registreeru</button>
+</form>
+<br/>
+<?php if(isset($_SESSION['errors'])): ?>
+<div role="alert">
+    <div style="margin-left: 1em">
+        <p>
+            <?php foreach($_SESSION['errors'] as $error=>$message):
+            echo '<p>'.$message.'</p>';
+            endforeach; ?>
+        </p>
+    </div>
+</div>
+<?php unset($_SESSION['errors']); ?><?php endif; ?>
