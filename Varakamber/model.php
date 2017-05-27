@@ -125,5 +125,46 @@ function logout() {
 	$id = false;
 }
 
+function lisaEse() {
+	if (isset($_SESSION['user'])) {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+			global $connection;
+
+			$errors = array();
+
+			if (empty(trim($_POST['eseme_nimi']))) {
+				$errors[] = "Nimetus on puudu!";
+			}
+
+			if (empty(trim($_POST['eseme_liik']))) {
+				$errors[] = "Liik on puudu!";
+			}
+
+			if (empty(trim($_POST['asukoht']))) {
+				$errors[] = "Asukoht on puudu!";
+			}
+
+
+			$id = $_SESSION['user_id'];
+
+			$ese = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['eseme_nimi'])));
+			$liik = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['eseme_liik'])));
+			$asukoht = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['asukoht'])));
+
+			if (empty($errors)) {
+
+				$result = mysqli_query($connection, "INSERT INTO 10153154_kamber (liik, asukoht, ese, alates) VALUES ('$liik', '$asukoht', '$ese', SYSDATE())") or die("Ei õnnestunud eset lisada.");
+
+				$_SESSION['success'] = 'Lisasid edukalt „' . $ese . '“. ';
+
+			}
+			else {
+				return $errors;
+			}
+		}
+	}
+}
+
 ?>
 

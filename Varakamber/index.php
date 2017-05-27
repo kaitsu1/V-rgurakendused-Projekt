@@ -32,6 +32,15 @@ connect_db();
 		case "logout":
 			logout();
 			header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=index");
+			break;
+		case "lisatud":
+			$errors = lisaEse();
+			if (empty($errors)) {
+				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=vaata");
+			} else {
+				$_SESSION['errors'] = $errors;
+				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=lisa");
+			}
 		}
 
 	require_once('views/head.html'); 
@@ -53,7 +62,14 @@ connect_db();
 			} else {
 				include('views/register.html');				
 			}				
-			break;	
+			break;
+		case "lisa":
+			if (isset($_SESSION['user'])) {
+				include('views/lisa_ese.html');				
+			} else {
+				include('views/index.html');				
+			}			
+			break;
 		default:
 			include('views/index.html');
 	} 
