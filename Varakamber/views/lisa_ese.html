@@ -1,0 +1,48 @@
+<div>
+                <h2>Lisa ese</h2>
+
+                <form action="index.php?page=lisatud" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="ese">Eseme nimetus</label>
+                        <div>
+                            <input id="ese" name="eseme_nimi" placeholder="Eseme nimetus" type="text"  maxlength="100">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="col-sm-2 control-label" for="liik">Eseme liik</label>
+                        <div>
+                            <input id="liik" name="eseme_liik" placeholder="Eseme liik" type="text"  maxlength="100">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="asukoht">Asukoht</label>
+                        <div>
+                            <input id="asukoht" name="asukoht" placeholder="Eseme asukoht" type="text"  maxlength="100">
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label for="notes"></label>
+                        <div>
+                            <?php if(isset($_SESSION['errors'])): ?>
+                            <div role="alert">
+                                <div style="margin-left: 2em">
+                                    <p>
+                                        <?php foreach($_SESSION['errors'] as $error=>$message):
+                                        echo '<p>'.$message.'</p>';
+                                        endforeach; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <?php unset($_SESSION['errors']); ?>
+                          <?php endif; ?>
+                        </div>
+                    </div>
+
+                            <button type="submit">Lisa</button>
+    
+                </form>
+</div>
