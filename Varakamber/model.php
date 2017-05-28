@@ -166,5 +166,25 @@ function lisaEse() {
 	}
 }
 
+function vaataAsju() {
+	if (isset($_SESSION['user'])) {
+
+		global $connection;
+
+		$id = $_SESSION['user_id'];
+
+		$query = mysqli_query($connection, "SELECT * FROM 10153154_kamber");
+		$row = mysqli_fetch_assoc($query);
+		
+		$esemed = array();
+		
+		$result = $connection->query("SELECT id, ese, liik, asukoht, alates, kuni, kustutatud FROM 10153154_kamber");
+		
+		for ($esemed = array(); $row = $result->fetch_assoc(); $esemed[] = $row);
+		
+		return $esemed;
+	}
+}
+
 ?>
 

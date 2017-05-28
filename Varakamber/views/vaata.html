@@ -1,0 +1,36 @@
+<div>
+
+			<?php if(isset($_SESSION['success'])): ?>
+					<div class="alert alert-success" role="alert">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<p><?php print_r($_SESSION['success']); ?></p>
+					</div> 
+			<?php unset($_SESSION['success']); ?>
+			<?php endif; ?>
+
+			<h1>Kõik esemed</h1>
+			<div>
+				<table>
+				<thead>
+					<th>Nimetus</th>
+					<th>Liik</th>
+					<th>Asukoht</th>
+					<th>Alates</th>
+					<th>Kuni</th>
+					<th>Muuda</th>
+					<th>Kustuta</th>
+				</thead>
+				<?php foreach($esemed as $key=>$value) {
+						print_r("<tr>");
+						print_r("<td>".$value['ese']."</td>");
+						print_r("<td>".$value['liik']."</td>");
+						print_r("<td>".$value['asukoht']."</td>");
+						print_r("<td>".$value['alates']."</td>");
+						print_r("<td>".$value['kuni']."</td>");
+						print_r("<td><a href=\"?page=muuda&id=".$value['id']."\">Muuda</a></td>");
+						print_r("<td><a href=\"?page=kustuta&id=".$value['id']."\" onclick=\"return confirm('Kas oled kindel, et tahad eseme kustutada?')\">Kustuta</a></td>");
+					}
+				?>
+				</table>
+			</div>
+</div>

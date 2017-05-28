@@ -41,6 +41,9 @@ connect_db();
 				$_SESSION['errors'] = $errors;
 				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=lisa");
 			}
+			break;
+		case "vaata":
+			$esemed = vaataAsju();	
 		}
 
 	require_once('views/head.html'); 
@@ -69,6 +72,13 @@ connect_db();
 			} else {
 				include('views/index.html');				
 			}			
+			break;
+		case "vaata":
+			if (isset($_SESSION['user'])) {
+				include('views/vaata.html');				
+			} else {
+				include('views/index.html');				
+			}
 			break;
 		default:
 			include('views/index.html');

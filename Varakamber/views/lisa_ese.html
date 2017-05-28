@@ -2,24 +2,36 @@
                 <h2>Lisa ese</h2>
 
                 <form action="index.php?page=lisatud" method="post">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="ese">Eseme nimetus</label>
+                    <div>
+                        <label for="ese">Eseme nimetus</label>
                         <div>
                             <input id="ese" name="eseme_nimi" placeholder="Eseme nimetus" type="text"  maxlength="100">
                         </div>
                     </div>
 
                     <div>
-                        <label class="col-sm-2 control-label" for="liik">Eseme liik</label>
+                        <label for="liik">Eseme liik</label>
                         <div>
-                            <input id="liik" name="eseme_liik" placeholder="Eseme liik" type="text"  maxlength="100">
+							<select name="eseme_liik">
+								<option value="Ehitustööriist">Ehitustööriist</option>
+								<option value="Aiatööriist">Aiatööriist</option>
+								<option value="Mänguasi">Mänguasi</option>
+								<option value="Tehnika">Tehnika</option>
+							</select>
+
                         </div>
                     </div>
 
                     <div>
                         <label for="asukoht">Asukoht</label>
                         <div>
-                            <input id="asukoht" name="asukoht" placeholder="Eseme asukoht" type="text"  maxlength="100">
+                            <select name="asukoht">
+								<option value="Korter">Korter</option>
+								<option value="Kelder">Kelder</option>
+								<option value="Kuur">Kuur</option>
+								<option value="Garaaž">Garaaž</option>
+								<option value="Pööning">Pööning</option>
+							</select>
                         </div>
                     </div>
 
