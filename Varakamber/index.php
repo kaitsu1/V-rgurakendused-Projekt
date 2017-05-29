@@ -42,6 +42,25 @@ connect_db();
 				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=lisa");
 			}
 			break;
+		case "muuda":
+			$esemeInfo = getEsemeInfo($_GET['id']);
+			if (empty($esemeInfo)) {
+				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=index");
+			} 
+			break;
+		case "muudetud":
+			$errors = muudaEset();
+			if (empty($errors)) {
+				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=vaata");
+			} else {
+				$_SESSION['errors'] = $errors;
+				header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=muuda&id=".$_POST['id']);
+			}
+			break;
+		case "eemalda":
+			eemaldaEse();
+			header("Location: http://enos.itcollege.ee/~kpapstel/Varakamber/index.php?page=vaata");
+			break;			
 		case "vaata":
 			$esemed = vaataAsju();	
 		}
@@ -76,6 +95,13 @@ connect_db();
 		case "vaata":
 			if (isset($_SESSION['user'])) {
 				include('views/vaata.html');				
+			} else {
+				include('views/index.html');				
+			}
+			break;
+		case "muuda":
+			if (isset($_SESSION['user'])) {
+				include('views/muuda.html');				
 			} else {
 				include('views/index.html');				
 			}

@@ -1,20 +1,25 @@
 <form action="index.php?page=loginsuccess" method="post">
-    <h2>
-        Logi sisse
-    </h2>
-	
-	<div>
-        admin@admin.ee/adminadmin
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Logi sisse</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">
+			<label for="inputEmail">E-posti aadress</label> <input autofocus="" id="inputEmail" name="login_email" placeholder="E-posti aadress" required=""  maxlength="150" type="email">
+		</h5>
+      </div>
+	  <div class="row center">
+        <h5 class="header col s12 light">
+			<label for="inputPassword">Salasõna</label> <input id="inputPassword" name="login_password" placeholder="Salasõna" required=""  maxlength="150" type="password">
+		</h5>
+      </div>
+      <div class="row center">
+        <button class="waves-effect waves-light btn-large orange" type="submit" name="action">Sisene
+			<i class="material-icons right">send</i>
+		 </button>
+      </div>
     </div>
-	<br/>
-    <div>
-        <label for="inputEmail">E-posti aadress</label> <input autofocus="" id="inputEmail" name="login_email" placeholder="E-posti aadress" required=""  maxlength="1024" type="email">
-    </div>
-
-    <div class="form-group">
-        <label for="inputPassword">Salasõna</label> <input id="inputPassword" name="login_password" placeholder="Salasõna" required=""  maxlength="1024" type="password">
-    </div>
-    <button type="submit">Sisene</button>
+</div>
 </form>
 <br/>
 <?php if(isset($_SESSION['errors'])): ?>

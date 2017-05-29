@@ -156,7 +156,7 @@ function lisaEse() {
 
 				$result = mysqli_query($connection, "INSERT INTO 10153154_kamber (liik, asukoht, ese, alates) VALUES ('$liik', '$asukoht', '$ese', SYSDATE())") or die("Ei õnnestunud eset lisada.");
 
-				$_SESSION['success'] = 'Lisasid edukalt „' . $ese . '“. ';
+				$_SESSION['success'] = 'Lisasid edukalt eseme „' . $ese . '“. ';
 
 			}
 			else {
@@ -183,6 +183,74 @@ function vaataAsju() {
 		for ($esemed = array(); $row = $result->fetch_assoc(); $esemed[] = $row);
 		
 		return $esemed;
+	}
+}
+
+function getEsemeInfo($id) {
+	
+	global $connection;
+	
+	$userId = $_SESSION['user_id'];
+
+	$query = "SELECT * FROM 10153154_kamber WHERE id=$id";
+	$result = mysqli_query($connection, $query) or die("Ei saanud eseme infot.");
+
+	$esemeInfo = mysqli_fetch_assoc($result);
+
+	return $esemeInfo;
+}
+
+function muudaEset() {
+	if (isset($_SESSION['user'])) {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+			$errors = array();
+
+			global $connection;
+
+			$ese = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['eseme_nimi'])));
+			$liik = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['eseme_liik'])));
+			$asukoht = mysqli_real_escape_string($connection, trim(htmlspecialchars($_POST['asukoht'])));
+
+			if (empty(trim($_POST['eseme_nimi']))) {
+				$errors[] = "Eseme nimetus on puudu.";
+			}
+
+			if (empty(trim($_POST['eseme_liik']))) {
+				$errors[] = "Eseme liik on puudu.";
+			}
+
+			if (empty(trim($_POST['asukoht']))) {
+				$errors[] = "Asukoht on puudu.";
+			}
+
+			$id = $_POST['id'];
+
+			if (empty($errors)) {
+			
+				$query = mysqli_query($connection, "UPDATE 10153154_kamber SET ese='$ese', liik='$liik', asukoht='$asukoht' WHERE id='$id'") or die("Ei õnnestunud eseme infot uuendada."); 
+
+				$_SESSION['success'] = 'Muutsid edukalt eseme „' . $ese . '“ andmeid.';
+
+			} else {
+			
+				return $errors;
+			
+			}
+		}
+		
+	}
+}
+
+function eemaldaEse() {
+	if (isset($_GET['id'])) {
+		
+		global $connection;
+
+		$id = mysqli_real_escape_string($connection, $_GET['id']);
+		$query = mysqli_query($connection, "UPDATE 10153154_kamber SET kustutatud='Y', kuni=SYSDATE() WHERE id='$id'");
+
+		$_SESSION['success'] = 'Ese on eemaldatud.';
 	}
 }
 

@@ -1,20 +1,25 @@
-<div>
-		<?php if(isset($_SESSION['user'])): ?>
-		<div>
-			<p><a href="?page=vaata">Vaata</a> kõiki asju varakambris või <a href="?page=lisa">lisa</a> mõni uus.</p>
-			<?php if(!isset($_SESSION['user'])): ?>
-			<p><a href="?page=login">Logi sisse</a> või <a href="?page=register">registreeri kasutajaks</a></p>
-			<?php endif; ?>
-		</div>
-		<?php else: ?>
-			<div>
-				<h1>Varakamber</h1>
-				<p>Varakamber hoiab infot selle kohta, kus kohas mis kola asub.</p>
-				<p><a href="?page=login">Logi sisse</a>
-				</br>
-				<a href="?page=register">Registreeru</a></p>
-			</div>
-		<?php endif; ?>
-</div>
-
-
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+	<?php if(isset($_SESSION['user'])): ?>
+      <br><br>
+      <h1 class="header center orange-text">Varakamber</h1>
+      <div class="row center">
+        <h5 class="header col s12 light"><a href="?page=vaata">Vaata kõiki asju varakambris või lisa uusi</h5>
+      </div>
+      <div class="row center">
+        <a href="?page=vaata" id="download-button" class="btn-large waves-effect waves-light orange">Vaata</a>
+		<a href="?page=lisa" id="download-button" class="btn-large waves-effect waves-light orange">Lisa</a>
+      </div>
+    <?php else: ?>
+	  <h1 class="header center orange-text">Sisenemine</h1>
+      <div class="row center">
+        <h5 class="header col s12 light"><a href="?page=vaata">Logi sisse või registreeru</h5>
+      </div>
+      <div class="row center">
+        <a href="?page=login" id="download-button" class="btn-large waves-effect waves-light orange">Logi sisse</a>
+		<a href="?page=register" id="download-button" class="btn-large waves-effect waves-light orange">Registreeru</a>
+      </div>
+	  <br><br>
+	<?php endif; ?>
+    </div>
+  </div>
