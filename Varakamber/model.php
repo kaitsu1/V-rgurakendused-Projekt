@@ -189,8 +189,6 @@ function vaataAsju() {
 function getEsemeInfo($id) {
 	
 	global $connection;
-	
-	$userId = $_SESSION['user_id'];
 
 	$query = "SELECT * FROM 10153154_kamber WHERE id=$id";
 	$result = mysqli_query($connection, $query) or die("Ei saanud eseme infot.");

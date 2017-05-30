@@ -1,34 +1,43 @@
 <form action="index.php?page=registersuccess" method="post">
-    <h2>
-        Registreeru
-    </h2>
-
-    <div>
-        <label for="inputName">Nimi</label> <input autofocus="" class="form-control" id="inputName" name="name" placeholder="Nimi" required=""  maxlength="100" type="text">
-    </div>
-
-    <div>
-        <label for="inputEmail">E-posti aadress</label> <input autofocus="" class="form-control" id="inputEmail" name="email" placeholder="E-posti aadress" required=""  maxlength="1024" type="email">
-    </div>
-
-    <div>
-        <label for="inputPassword">Salasõna</label> <input class="form-control" id="inputPassword" name="password1" placeholder="Salasõna" required="" maxlength="1024" type="password">
-    </div>
-
-    <div>
-        <label for="inputPassword">Salasõna uuesti</label> <input class="form-control" id="inputPassword" name="password2" placeholder="Salasõna uuesti" maxlength="1024" required="" type="password">
-    </div>
-    <button type="submit">Registreeru</button>
-</form>
-<br/>
-<?php if(isset($_SESSION['errors'])): ?>
-<div role="alert">
-    <div style="margin-left: 1em">
-        <p>
-            <?php foreach($_SESSION['errors'] as $error=>$message):
-            echo '<p>'.$message.'</p>';
-            endforeach; ?>
-        </p>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Registreeru</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">
+			<label>Nimi</label> <input autofocus="" name="name" placeholder="Nimi" required="" type="text">
+		</h5>
+      </div>
+	  <div class="row center">
+        <h5 class="header col s12 light">
+			<label>E-posti aadress</label> <input name="email" placeholder="E-posti aadress" required=""  maxlength="150" type="email">
+		</h5>
+      </div>
+	  <div class="row center">
+        <h5 class="header col s12 light">
+			<label>Salasõna</label> <input name="password1" placeholder="Salasõna" required=""  maxlength="150" type="password">
+		</h5>
+      </div>
+	  <div class="row center">
+        <h5 class="header col s12 light">
+			<label>Salasõna uuesti</label> <input name="password2" placeholder="Salasõna uuesti" required=""  maxlength="150" type="password">
+		</h5>
+      </div>
+      <div class="row center">
+        <button class="waves-effect waves-light btn-large orange" type="submit" name="action">Registreeru</button>
+      </div>
     </div>
 </div>
-<?php unset($_SESSION['errors']); ?><?php endif; ?>
+</form>
+<div>
+	<div>
+		<?php if(isset($_SESSION['errors'])): ?>
+		<div class= "row center red lighten-4">
+			<?php foreach($_SESSION['errors'] as $error=>$message):
+                         echo '<p class="center">'.$message.'</p>';
+                         endforeach; ?>
+		</div>
+		<?php unset($_SESSION['errors']); ?>
+		<?php endif; ?>
+	</div>				
+</div>
