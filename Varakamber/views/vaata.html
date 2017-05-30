@@ -1,23 +1,26 @@
 <div>
 
 			<?php if(isset($_SESSION['success'])): ?>
-					<div>
+					<div class= "row center green lighten-5">
 						<p><?php print_r($_SESSION['success']); ?></p> <!--teate võiks suuremalt esitada -->
-					</div> 
+					</div>
 			<?php unset($_SESSION['success']); ?>
 			<?php endif; ?>
 
-			<h3 class="header center orange-text">Kõik olemasolevad esemed</h3>
+			<h4 class="header center orange-text">Kõik olemasolevad esemed</h4>
 			<div>
 				<table class="centered highlight">
 				<thead>
+				<tr>
 					<th>Nimetus</th>
 					<th>Liik</th>
 					<th>Asukoht</th>
 					<th>Alates</th>
 					<th>Muuda</th>
 					<th>Eemalda</th>
+				</tr>
 				</thead>
+				<tbody>
 				<?php foreach($esemed as $key=>$value) {
 					if ($value['kustutatud'] == 'N') {
 						print_r("<tr>");
@@ -31,29 +34,32 @@
 					}
 										
 				?>
+				</tbody>
 				</table>
 			</div>
-			
-			<h3 class="header center orange-text">Eemaldatud esemed</h3>
-			<div>
-				<table class="centered highlight">
-				<thead>
-					<th>Nimetus</th>
-					<th>Liik</th>
-					<th>Asukoht</th>
-					<th>Eemaldatud</th>
-				</thead>
-				<?php foreach($esemed as $key=>$value) {
-					if ($value['kustutatud'] == 'Y') {
-						print_r("<tr>");
-						print_r("<td>".$value['ese']."</td>");
-						print_r("<td>".$value['liik']."</td>");
-						print_r("<td>".$value['asukoht']."</td>");
-						print_r("<td>".$value['kuni']."</td>");
+			<div class="row"></div>
+			<div class="container">
+			<h4 class="header center orange-text"><a class="btn btn-floating pulse orange" onclick="showHide('secondTable')"><i class="small material-icons">system_update_alt</i></a>&nbsp;Eemaldatud esemed</h4>
+				<div>
+					<table class="centered highlight" id="secondTable" style="display: none;">
+					<thead>
+						<th>Nimetus</th>
+						<th>Liik</th>
+						<th>Asukoht</th>
+						<th>Eemaldatud</th>
+					</thead>
+					<?php foreach($esemed as $key=>$value) {
+						if ($value['kustutatud'] == 'Y') {
+							print_r("<tr>");
+							print_r("<td>".$value['ese']."</td>");
+							print_r("<td>".$value['liik']."</td>");
+							print_r("<td>".$value['asukoht']."</td>");
+							print_r("<td>".$value['kuni']."</td>");
+							}
 						}
-					}
-										
-				?>
-				</table>
+											
+					?>
+					</table>
+				</div>
 			</div>
 </div>

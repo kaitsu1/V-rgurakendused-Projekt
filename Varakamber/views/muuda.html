@@ -1,57 +1,56 @@
-<div>
-	<h2>Muuda eseme infot</h2>
-	<form action="index.php?page=muudetud" method="post">
-		<input name="id" type="hidden" value="<?php echo $_GET['id'] ?>">
-			<div>
-				<label for="eseme_nimi">Eseme nimetus</label>
-				<div>
-					<input id="eseme_nimi" name="eseme_nimi" type="text" maxlength="100" value="<?php echo $esemeInfo['ese']; ?>">
-				</div>
-			</div>
-			<div>
-				<label for="eseme_liik">Eseme liik</label>
-				<div>
-					<select name="eseme_liik">
-						<option value="<?php echo $esemeInfo['liik']; ?>"><?php echo $esemeInfo['liik']; ?></option>
-						<option value="Ehitustööriist">Ehitustööriist</option>
-						<option value="Aiatööriist">Aiatööriist</option>
-						<option value="Mänguasi">Mänguasi</option>
-						<option value="Tehnika">Tehnika</option>
-					</select>
-				</div>
-			</div>
-			<div>
-				<label for="asukoht">Asukoht</label>
-				<div>
-					<select name="asukoht">
-						<option value="<?php echo $esemeInfo['asukoht']; ?>"><?php echo $esemeInfo['asukoht']; ?></option>
-						<option value="Korter">Korter</option>
-						<option value="Kelder">Kelder</option>
-						<option value="Kuur">Kuur</option>
-						<option value="Garaaž">Garaaž</option>
-						<option value="Pööning">Pööning</option>
-					</select>
-				</div>
-			</div>
-			<div>
-					<?php if(isset($_SESSION['errors'])): ?>
-						<div>
-							<div style="margin-left: 1em">
-								<p>
-									<?php foreach($_SESSION['errors'] as $error=>$message):
-									echo '<p>'.$message.'</p>';
-									endforeach; ?>
-								</p>
-							</div>
-						</div>
-						<?php unset($_SESSION['errors']); ?>
-					<?php endif; ?>
-			</div>
-			<div>
-					<div>
-						<button type="submit">Muuda</button>
-					</div>
-
-			</div>
-	</form>
+<form action="index.php?page=muudetud" method="post">
+<input name="id" type="hidden" value="<?php echo $_GET['id'] ?>">
+<div class="section no-pad-bot" id="index-banner">
+	  <h1 class="header center orange-text">Muuda eseme infot</h1>
+      <div class="row center">
+	    <div class="col s12 m4 l4"></div>
+        <div class="col s12 m4 l4">
+			<label for="ese">Eseme nimetus</label> <input autofocus="" id="ese" name="eseme_nimi" required="" type="text" class="validate" value="<?php echo $esemeInfo['ese']; ?>">
+		</div>
+		<div class="col s12 m4 l4"></div>
+      </div>
+	  <div class="row center">
+	  <div class="col s12 m4 l4"></div>
+	  <div class="input-field col s12 m4 l4">
+		<select class="browser-default" name="eseme_liik">
+		  <option value="<?php echo $esemeInfo['liik']; ?>"><?php echo $esemeInfo['liik']; ?></option>
+		  <option value="Ehitustööriist">Ehitustööriist</option>
+		  <option value="Aiatööriist">Aiatööriist</option>
+		  <option value="Mänguasi">Mänguasi</option>
+		  <option value="Tehnika">Tehnika</option>
+		</select>
+	  </div>
+	  <div class="col s12 m4 l4"></div>
+	  </div>
+	  <div class="row center">
+	  <div class="col s12 m4 l4"></div>
+	  <div class="input-field col s12 m4 l4">
+		<select class="browser-default" name="asukoht">
+		  <option value="<?php echo $esemeInfo['asukoht']; ?>"><?php echo $esemeInfo['asukoht']; ?></option>
+		  <option value="Korter">Korter</option>
+		  <option value="Kelder">Kelder</option>
+		  <option value="Kuur">Kuur</option>
+		  <option value="Garaaž">Garaaž</option>
+		  <option value="Pööning">Pööning</option>
+		</select>
+	  </div>
+	  <div class="col s12 m4 l4"></div>
+	  </div>
+	  <div>
+        <label for="notes"></label>
+            <div>
+                <?php if(isset($_SESSION['errors'])): ?>
+                    <div class= "row center red lighten-4">
+                            <?php foreach($_SESSION['errors'] as $error=>$message):
+                            echo '<p class="center">'.$message.'</p>';
+                            endforeach; ?>
+                    </div>
+                <?php unset($_SESSION['errors']); ?>
+              <?php endif; ?>
+            </div>
+      </div>
+      <div class="row center">
+        <button class="waves-effect waves-light btn-large orange" type="submit" name="action">Muuda</button>
+      </div>
 </div>
+</form>

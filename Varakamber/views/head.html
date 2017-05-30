@@ -10,25 +10,31 @@
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
 		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<!-- Tablesorter tabelite sorteerimiseks -->
+		<script type="text/javascript" src="js/jquery-latest.js"></script> 
+		<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+		<script type="text/javascript">
+			function showHide(tableId) {
+					var div = document.getElementById( tableId );
+					if (div.style.display !== "none") {
+						div.style.display = "none";
+					} else {
+						div.style.display = "table";
+					}
+		}</script>
+
 	</head>
 	<body>
 		<nav class="light-blue lighten-1" role="navigation">
-			<div class="nav-wrapper container"><a id="logo-container" href="?page=index" class="brand-logo">Avaleht</a>
+			<div class="nav-wrapper container"><a id="logo-container" href="?page=index" class="brand-logo">Varakamber</a>
 				 <?php if(isset($_SESSION['user'])): ?>
-				  <ul class="right hide-on-med-and-down">
+				  <ul class="right">
 					<li><a href="?page=vaata">Vaata</a></li>
 					<li><a href="?page=lisa">Lisa</a></li>
 					<li><a href="?page=logout">Logi välja</a></li>
 				  </ul>
-				  
-				  <a href="?page=index" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-				  <ul id="nav-mobile" class="side-nav">
-					<li><a href="?page=vaata">Vaata</a></li>
-					<li><a href="?page=lisa">Lisa</a></li>
-					<li><a href="?page=logout">Logi välja</a></li>
-				  </ul>
-				  
 			  <?php endif; ?>
 			</div>
 		</nav>

@@ -1,60 +1,55 @@
-<div>
-                <h2>Lisa ese</h2>
-
-                <form action="index.php?page=lisatud" method="post">
-                    <div>
-                        <label for="ese">Eseme nimetus</label>
-                        <div>
-                            <input id="ese" name="eseme_nimi" placeholder="Eseme nimetus" type="text"  maxlength="100">
-                        </div>
+<form action="index.php?page=lisatud" method="post">
+<div class="section no-pad-bot" id="index-banner">
+      <h1 class="header center orange-text">Lisa ese</h1>
+      <div class="row center">
+	    <div class="col s12 m4 l4"></div>
+        <div class="col s12 m4 l4">
+			<label for="ese">Eseme nimetus</label> <input autofocus="" id="ese" name="eseme_nimi" placeholder="Sisesta eseme nimetus" required="" type="text" class="validate">
+		</div>
+		<div class="col s12 m4 l4"></div>
+      </div>
+	  <div class="row center">
+	  <div class="col s12 m4 l4"></div>
+	  <div class="input-field col s12 m4 l4">
+		<select class="browser-default" name="eseme_liik">
+		  <option value="" disabled selected>Vali eseme liik</option>
+		  <option value="Ehitustööriist">Ehitustööriist</option>
+		  <option value="Aiatööriist">Aiatööriist</option>
+		  <option value="Mänguasi">Mänguasi</option>
+		  <option value="Tehnika">Tehnika</option>
+		</select>
+	  </div>
+	  <div class="col s12 m4 l4"></div>
+	  </div>
+	  <div class="row center">
+	  <div class="col s12 m4 l4"></div>
+	  <div class="input-field col s12 m4 l4">
+		<select class="browser-default" name="asukoht">
+		  <option value="" disabled selected>Vali asukoht</option>
+		  <option value="Korter">Korter</option>
+		  <option value="Kelder">Kelder</option>
+		  <option value="Kuur">Kuur</option>
+		  <option value="Garaaž">Garaaž</option>
+		  <option value="Pööning">Pööning</option>
+		</select>
+	  </div>
+	  <div class="col s12 m4 l4"></div>
+	  </div>
+	  <div>
+        <label for="notes"></label>
+            <div>
+                <?php if(isset($_SESSION['errors'])): ?>
+                    <div class= "row center red lighten-4">
+                            <?php foreach($_SESSION['errors'] as $error=>$message):
+                            echo '<p class="center">'.$message.'</p>';
+                            endforeach; ?>
                     </div>
-
-                    <div>
-                        <label for="liik">Eseme liik</label>
-                        <div>
-							<select name="eseme_liik">
-								<option value="Ehitustööriist">Ehitustööriist</option>
-								<option value="Aiatööriist">Aiatööriist</option>
-								<option value="Mänguasi">Mänguasi</option>
-								<option value="Tehnika">Tehnika</option>
-							</select>
-
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="asukoht">Asukoht</label>
-                        <div>
-                            <select name="asukoht">
-								<option value="Korter">Korter</option>
-								<option value="Kelder">Kelder</option>
-								<option value="Kuur">Kuur</option>
-								<option value="Garaaž">Garaaž</option>
-								<option value="Pööning">Pööning</option>
-							</select>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <label for="notes"></label>
-                        <div>
-                            <?php if(isset($_SESSION['errors'])): ?>
-                            <div role="alert">
-                                <div style="margin-left: 2em">
-                                    <p>
-                                        <?php foreach($_SESSION['errors'] as $error=>$message):
-                                        echo '<p>'.$message.'</p>';
-                                        endforeach; ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <?php unset($_SESSION['errors']); ?>
-                          <?php endif; ?>
-                        </div>
-                    </div>
-
-                            <button type="submit">Lisa</button>
-    
-                </form>
+                <?php unset($_SESSION['errors']); ?>
+              <?php endif; ?>
+            </div>
+      </div>
+      <div class="row center">
+        <button class="waves-effect waves-light btn-large orange" type="submit" name="action">Lisa</button>
+      </div>
 </div>
+</form>
